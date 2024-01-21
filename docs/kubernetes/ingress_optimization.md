@@ -6,7 +6,7 @@ tags:
 ---
 # Kubernetes NGINX Ingress Controller optimization
 
-1. Set NGINX as the default ingress controller
+## 1. Set NGINX as the default ingress controller
 
 **Why ? :** No more need for the ingressClassName field in ingress.yaml
 
