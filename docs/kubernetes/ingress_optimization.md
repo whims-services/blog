@@ -14,7 +14,7 @@ The NGINX ingress controller has additional configuration options that can be cu
 
 **Note:** annotations take precedence over a ConfigMap.
 
-## Useful ingress annotations
+## Optimize NGINX Ingress annotations
 
 ```yaml
 # Disable NGINX access logs for a particular service
