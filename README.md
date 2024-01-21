@@ -1,2 +1,0 @@
-# blog
-Technical articles
