@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.759153844147">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.759155501437">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -30,12 +30,12 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.759153844147" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.759155501437" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.759153844147" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.759155501437" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.759153844147" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.759153844147" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.759155501437" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.759155501437" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -199,14 +199,44 @@ nginx.ingress.kubernetes.io/enable-access-log: &quot;false&quot;
 # Whitelist IP for a particular Ingress (CIDR or just IP)
 nginx.ingress.kubernetes.io/whitelist-source-range: &quot;X.X.X.X/24,X.X.X.X&quot;
 
-# Allow large file transfert
+# Allow large file transfert - avoid 413 error
 nginx.ingress.kubernetes.io/proxy-body-size: 100m
 
 # Stick user session to the same targeted pod 
 nginx.ingress.kubernetes.io/affinity: &quot;cookie&quot;
 nginx.ingress.kubernetes.io/affinity-mode: &quot;persistent&quot; # change to &quot;balanced&quot; (default) to redistribute some sessions when scaling pods
 nginx.ingress.kubernetes.io/session-cookie-name: &quot;name-distinguishing-services&quot;
-nginx.ingress.kubernetes.io/session-cookie-max-age: &quot;172800&quot; # in seconds, equivalent to 48h</code></pre>
+nginx.ingress.kubernetes.io/session-cookie-max-age: &quot;172800&quot; # in seconds, equivalent to 48h
+
+# Rewrite internal redirects from HTTP to HTTPS
+nginx.ingress.kubernetes.io/proxy-redirect-from: http://
+nginx.ingress.kubernetes.io/proxy-redirect-to: https://
+
+# Redirect from www to non-www 
+nginx.ingress.kubernetes.io/from-to-www-redirect: &quot;true&quot;
+
+# Force ssl redirect
+nginx.ingress.kubernetes.io/force-ssl-redirect: &quot;true&quot;
+
+# CORS Settings
+nginx.ingress.kubernetes.io/enable-cors: &quot;true&quot;
+nginx.ingress.kubernetes.io/cors-allow-methods: &quot;PUT, GET, POST, OPTIONS&quot;
+nginx.ingress.kubernetes.io/cors-allow-headers: &quot;X-Forwarded-For, X-app123-XPTO&quot;
+nginx.ingress.kubernetes.io/cors-expose-headers: &quot;*, X-CustomResponseHeader&quot;
+nginx.ingress.kubernetes.io/cors-max-age: 600
+nginx.ingress.kubernetes.io/cors-allow-credentials: &quot;false&quot;
+
+# Timeout settings
+nginx.org/proxy-connect-timeout: &quot;30s&quot;
+nginx.org/proxy-read-timeout: &quot;20s&quot;
+
+# Rate limiting for mitigating ddos attacks
+nginx.ingress.kubernetes.io/limit-rps: &quot;5&quot;
+nginx.ingress.kubernetes.io/limit-rpm: &quot;300&quot;
+nginx.ingress.kubernetes.io/limit-connections: &quot;10&quot;
+
+# Change the backend protocol - default HTTP - valid values HTTPS, GRPC, GRPCS, AJP, and FCGI.
+nginx.ingress.kubernetes.io/backend-protocol: &quot;HTTPS&quot;</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="optimize-nginx-ingress-controller-configmap">
     <h2>
@@ -219,6 +249,7 @@ nginx.ingress.kubernetes.io/session-cookie-max-age: &quot;172800&quot; # in seco
 <li>Autoscale the ingress controller</li>
 <li>Default certificate for non-configured routes</li>
 <li>Set as the default ingress controller</li>
+<li>Redirect users HTTP calls to HTTPS port</li>
 <li>Use professional error pages</li>
 <li>Access to real client IP in applications</li>
 <li>Set maintenance mode</li>
@@ -239,6 +270,24 @@ nginx.ingress.kubernetes.io/session-cookie-max-age: &quot;172800&quot; # in seco
     setAsDefaultIngress: true # (no more need of ingressClassName in ingress.yaml)
   config:
     custom-http-errors: 404,408,500,501,502,503,504,505
+    # from https://github.com/kubernetes/ingress-nginx/issues/8017
+    http-snippet: |
+      server{
+        listen 2443;
+        return 308 https://$host$request_uri;
+      }
+    use-forwarded-headers: &quot;true&quot; # from https://github.com/kubernetes/ingress-nginx/issues/1957
+  service:
+    externalTrafficPolicy: &quot;Local&quot; # &lt;---- access to real client IP in applications
+    enableHttp: true
+    enableHttps: true
+    targetPorts:
+      http: tohttps # from https://github.com/kubernetes/ingress-nginx/issues/8017
+      https: https
+  containerPort:
+    http: 80
+    https: 443
+    tohttps: 2443 # from https://github.com/kubernetes/ingress-nginx/issues/8017
 defaultBackend:
   enabled: true
   image:
@@ -248,9 +297,7 @@ defaultBackend:
     - name: TEMPLATE_NAME
       value: connexion
     - name: SHOW_DETAILS # Optional: enables the output of additional information on error pages
-      value: &quot;false&quot;
-  service:
-    externalTrafficPolicy: &quot;Local&quot; # &lt;---- access to real client IP in applications</code></pre>
+      value: &quot;false&quot;</code></pre>
 </doc-codeblock></div>
 <p>Sources:</p>
 <ul>
@@ -260,6 +307,7 @@ defaultBackend:
 <li><a href="https://devopsdirective.com/posts/2022/10/kubernetes-maintenance-page/">Kubernetes maintenance page</a></li>
 <li><a href="https://loft.sh/blog/kubernetes-nginx-ingress-10-useful-configuration-options/">LoftSh Useful configuration</a></li>
 <li><a href="https://dev.to/zenika/kubernetes-nginx-ingress-controller-10-complementary-configurations-for-web-applications-ken">Dev.to - Zenika</a></li>
+<li><a href="https://dev.to/danielepolencic/autoscaling-ingress-controllers-in-kubernetes-1kgn">Dev.to Daniele Polencic Autoscaling</a></li>
 </ul>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
