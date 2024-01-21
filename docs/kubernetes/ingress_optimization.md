@@ -9,6 +9,7 @@ tags:
 The NGINX ingress controller has additional configuration options that can be customized and configured to create a more dynamic application. Basically, this can be done in two ways:
 
 **Annotations:** this option can be used if you want a specific configuration for a particular ingress rule.
+
 **ConfigMap:** this option can be used when you need to set global configurations for the NGINX ingress controller.
 
 **Note:** annotations take precedence over a ConfigMap.
