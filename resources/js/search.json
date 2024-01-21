@@ -1,1 +1,1 @@
-[[{"i":"#","p":["Homepage of technical blog"]},{"l":"Home"},{"l":"Bienvenue","p":["Hello world"]}]]
+[[{"i":"#","p":["Homepage of technical blog"]},{"l":"Home","p":["Hello world"]}],[{"l":"Kubernetes NGINX Ingress Controller optimization","p":["Set NGINX as the default ingress controller","Why ? : No more need for the ingressClassName field in ingress.yaml","File : nginx.helm.values.yml"]}]]
