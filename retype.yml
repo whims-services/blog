@@ -3,7 +3,7 @@ output: .retype
 url: whims-services.github.io
 branding:
   title: Wiki - Whims-Services
-  #logo: static/favicon.ico
+  logo: static/logos/whims-bold.png
   label: Docs
 editor:
   enabled: true
