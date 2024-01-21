@@ -2,7 +2,7 @@ input: ./docs
 output: .retype
 url: whims-services.github.io
 branding:
-  title: Wiki - Whims-Services
+  title: Wiki
   logo: /static/logos/whims-bold.png
   label: Docs
 editor:
