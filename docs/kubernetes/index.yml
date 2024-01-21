@@ -1,7 +1,6 @@
 label: Kubernetes
 expanded: true
 order: -1
-icon: /static/logos/kubernetes.png
+icon: https://upload.wikimedia.org/wikipedia/labs/b/ba/Kubernetes-icon-color.svg
 tags:
   - kubernetes
-  - ingress
