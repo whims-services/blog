@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.759150198913">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.759153657372">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>Kubernetes NGINX Ingress Controller optimization</title>
-    <meta name="title" content="Kubernetes NGINX Ingress Controller optimization">
-    <meta name="description" content="Why ? : No more need for the ingressClassName field in ingress.yaml">
+    <title>Kubernetes NGINX Ingress Controller optimization (Helm deployed)</title>
+    <meta name="title" content="Kubernetes NGINX Ingress Controller optimization (Helm deployed)">
+    <meta name="description" content="The NGINX ingress controller has additional configuration options that can be customized and configured to create a more dynamic application.">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://whims-services.github.io/kubernetes/ingress_optimization/">
@@ -19,23 +19,23 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://whims-services.github.io/kubernetes/ingress_optimization/">
-    <meta property="og:title" content="Kubernetes NGINX Ingress Controller optimization">
-    <meta property="og:description" content="Why ? : No more need for the ingressClassName field in ingress.yaml">
+    <meta property="og:title" content="Kubernetes NGINX Ingress Controller optimization (Helm deployed)">
+    <meta property="og:description" content="The NGINX ingress controller has additional configuration options that can be customized and configured to create a more dynamic application.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://whims-services.github.io/kubernetes/ingress_optimization/">
-    <meta property="twitter:title" content="Kubernetes NGINX Ingress Controller optimization">
-    <meta property="twitter:description" content="Why ? : No more need for the ingressClassName field in ingress.yaml">
+    <meta property="twitter:title" content="Kubernetes NGINX Ingress Controller optimization (Helm deployed)">
+    <meta property="twitter:description" content="The NGINX ingress controller has additional configuration options that can be customized and configured to create a more dynamic application.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.759150198913" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.759153657372" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.759150198913" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.759153657372" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.759150198913" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.759150198913" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.759153657372" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.759153657372" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -176,26 +176,91 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="kubernetes-nginx-ingress-controller-optimization" class="break-words">
+<doc-anchor-target id="kubernetes-nginx-ingress-controller-optimization-helm-deployed" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#kubernetes-nginx-ingress-controller-optimization">#</doc-anchor-trigger>
-        <span>Kubernetes NGINX Ingress Controller optimization</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#kubernetes-nginx-ingress-controller-optimization-helm-deployed">#</doc-anchor-trigger>
+        <span>Kubernetes NGINX Ingress Controller optimization (Helm deployed)</span>
     </h1>
 </doc-anchor-target>
-<doc-anchor-target id="1-set-nginx-as-the-default-ingress-controller">
+<p>The NGINX ingress controller has additional configuration options that can be customized and configured to create a more dynamic application. Basically, this can be done in two ways:</p>
+<p><strong>Annotations:</strong> this option can be used if you want a specific configuration for a particular ingress rule.
+<strong>ConfigMap:</strong> this option can be used when you need to set global configurations for the NGINX ingress controller.</p>
+<p><strong>Note:</strong> annotations take precedence over a ConfigMap.</p>
+<doc-anchor-target id="useful-ingress-annotations">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#1-set-nginx-as-the-default-ingress-controller">#</doc-anchor-trigger>
-        <span>1. Set NGINX as the default ingress controller</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#useful-ingress-annotations">#</doc-anchor-trigger>
+        <span>Useful ingress annotations</span>
     </h2>
 </doc-anchor-target>
-<p><strong>Why ? :</strong> No more need for the ingressClassName field in ingress.yaml</p>
-<p><strong>File :</strong> <code v-pre>nginx.helm.values.yml</code></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml"># Disable NGINX access logs for a particular service
+nginx.ingress.kubernetes.io/enable-access-log: &quot;false&quot;
+
+# Whitelist IP for a particular Ingress (CIDR or just IP)
+nginx.ingress.kubernetes.io/whitelist-source-range: &quot;X.X.X.X/24,X.X.X.X&quot;
+
+# Allow large file transfert
+nginx.ingress.kubernetes.io/proxy-body-size: 100m
+
+# Stick user session to the same targeted pod 
+nginx.ingress.kubernetes.io/affinity: &quot;cookie&quot;
+nginx.ingress.kubernetes.io/affinity-mode: &quot;persistent&quot; # change to &quot;balanced&quot; (default) to redistribute some sessions when scaling pods
+nginx.ingress.kubernetes.io/session-cookie-name: &quot;name-distinguishing-services&quot;
+nginx.ingress.kubernetes.io/session-cookie-max-age: &quot;172800&quot; # in seconds, equivalent to 48h</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="optimize-nginx-ingress-controller-configmap">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#optimize-nginx-ingress-controller-configmap">#</doc-anchor-trigger>
+        <span>Optimize NGINX Ingress Controller ConfigMap</span>
+    </h2>
+</doc-anchor-target>
+<p>You should set optimizations for the default settings of Nginx ingress controller at <code v-pre>values.yml</code></p>
+<ul>
+<li>Autoscale the ingress controller</li>
+<li>Default certificate for non-configured routes</li>
+<li>Set as the default ingress controller</li>
+<li>Use professional error pages</li>
+<li>Access to real client IP in applications</li>
+<li>Set maintenance mode</li>
+</ul>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-yaml"><code v-pre class="language-yaml">controller:
+  kind: DaemonSet # &lt;---- use DaemonSet instead of Deployment
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 3
+    targetCPUUtilizationPercentage: 200
+    targetMemoryUtilizationPercentage: 200
+  extraArgs:
+    default-ssl-certificate: &quot;my-namespace/my-certificate&quot; # &lt;---- certificate, for non-configured routes
   ingressClass:
-    create: true # default
-    setAsDefaultIngress: true</code></pre>
+    create: true
+    setAsDefaultIngress: true # (no more need of ingressClassName in ingress.yaml)
+  config:
+    custom-http-errors: 404,408,500,501,502,503,504,505
+defaultBackend:
+  enabled: true
+  image:
+    repository: ghcr.io/tarampampam/error-pages # &lt;---- use professional error pages
+    tag: 2.26 # https://github.com/tarampampam/error-pages/releases
+  extraEnvs:
+    - name: TEMPLATE_NAME
+      value: connexion
+    - name: SHOW_DETAILS # Optional: enables the output of additional information on error pages
+      value: &quot;false&quot;
+  service:
+    externalTrafficPolicy: &quot;Local&quot; # &lt;---- access to real client IP in applications</code></pre>
 </doc-codeblock></div>
+<p>Sources:</p>
+<ul>
+<li><a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/">NGINX Ingress Controller annotations</a></li>
+<li><a href="https://kubernetes.github.io/ingress-nginx/examples/affinity/cookie/">Sticky session</a></li>
+<li><a href="https://help.ovhcloud.com/csm/en-public-cloud-kubernetes-getting-source-ip-behind-loadbalancer?id=kb_article_view&amp;sysparm_article=KB0049765">OVH Cloud - Real IPs</a></li>
+<li><a href="https://devopsdirective.com/posts/2022/10/kubernetes-maintenance-page/">Kubernetes maintenance page</a></li>
+<li><a href="https://loft.sh/blog/kubernetes-nginx-ingress-10-useful-configuration-options/">LoftSh Useful configuration</a></li>
+<li><a href="https://dev.to/zenika/kubernetes-nginx-ingress-controller-10-complementary-configurations-for-web-applications-ken">Dev.to - Zenika</a></li>
+</ul>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
@@ -254,6 +319,6 @@
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Kubernetes NGINX Ingress Controller optimization", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Kubernetes NGINX Ingress Controller optimization (Helm deployed)", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
