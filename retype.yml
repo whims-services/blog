@@ -1,0 +1,20 @@
+input: .
+output: .retype
+url: https://whims-services.github.io/blog/
+branding:
+  title: Wiki - Whims-Services
+  #logo: static/favicon.ico
+  label: Docs
+editor:
+  enabled: true
+generator:
+  recase: all
+links:
+- text: OVH Cloud
+  link: https://www.ovhcloud.com/fr/
+- text: Gitlab
+  link: https://gitlab.com/
+- text: Grafana
+  link: https://icap.grafana.net/
+footer:
+  copyright: "&copy; Copyright {{ year }}. All rights reserved."
