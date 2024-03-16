@@ -3,7 +3,7 @@ output: .retype
 url: whims-services.github.io
 branding:
   title: Wiki
-  logo: https://iili.io/JaWn9Ev.png
+  logo: ./static/logos/whims-bold.png
   label: Docs
 editor:
   enabled: true
@@ -14,7 +14,5 @@ links:
   link: https://www.ovhcloud.com/fr/
 - text: Gitlab
   link: https://gitlab.com/
-- text: Grafana
-  link: https://icap.grafana.net/
 footer:
   copyright: "&copy; Copyright {{ year }}. All rights reserved."
