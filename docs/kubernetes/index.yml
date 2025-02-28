@@ -1,6 +1,6 @@
 label: Kubernetes
 expanded: true
 order: -1
-icon: https://upload.wikimedia.org/wikipedia/labs/b/ba/Kubernetes-icon-color.svg
+icon: https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/logo/logo.svg
 tags:
   - kubernetes
