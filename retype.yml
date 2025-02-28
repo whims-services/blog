@@ -10,8 +10,6 @@ editor:
 generator:
   recase: all
 links:
-- text: OVH Cloud
-  link: https://www.ovhcloud.com/fr/
 - text: Gitlab
   link: https://gitlab.com/
 footer:
