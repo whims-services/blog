@@ -4,7 +4,7 @@ tags:
   - kubernetes
   - namespace
 ---
-# Detecting Orphaned Resources in Kubernetes
+# Detecting Orphaned Resources
 
 The efficient management of resources in Kubernetes is essential to maintain a clean and performant cluster. 
 However, it may happen that resources become orphaned, meaning they are no longer associated with an existing namespace.

@@ -4,7 +4,7 @@ tags:
   - kubernetes
   - ingress
 ---
-# Kubernetes NGINX Ingress Controller optimization (Helm deployed)
+# NGINX Ingress Controller optimization (Helm deployed)
 
 The NGINX ingress controller has additional configuration options that can be customized and configured to create a more dynamic application. Basically, this can be done in two ways:
 
