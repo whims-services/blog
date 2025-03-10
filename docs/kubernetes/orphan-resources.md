@@ -62,3 +62,6 @@ To use the script, save it to a file and make it executable:
 chmod +x detect-orphan-resources.sh
 ./detect-orphan-resources.sh
 ```
+
+Sources:
+* [Reddit](https://www.reddit.com/r/kubernetes/comments/1j5644x/why_you_should_not_forcefully_finalize_a/)
