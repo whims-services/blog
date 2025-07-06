@@ -1,6 +1,5 @@
 ---
-visibility: private
-draft: true
+visibility: public
 icon: home
 label: Accueil
 order: 1000
@@ -31,4 +30,4 @@ Commandes et workflows Git utiles pour le développement et les opérations.
 
 ---
 
-**Note :** Cette page est actuellement en mode privé/draft. Pour la publier, supprimer la ligne `draft: true` du frontmatter.
+**Note :** Ce blog est en cours de construction. Les articles sont progressivement publiés après révision.

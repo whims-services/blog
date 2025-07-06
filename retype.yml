@@ -1,6 +1,6 @@
 input: ./docs
 output: .retype
-url: whims-services.github.io
+url: whims-services.github.io/blog
 
 branding:
   title: Tech Blog
