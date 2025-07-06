@@ -1,16 +1,86 @@
 input: ./docs
 output: .retype
 url: whims-services.github.io
+
 branding:
-  title: Wiki
+  title: Tech Blog
   logo: ./static/logos/whims-bold.png
-  label: Docs
+  label: Cloud Native
+
+meta:
+  title: " - Blog Tech Cloud Native"
+  description: "Retours d'expérience sur les technologies cloud native, Kubernetes, DevOps et l'écosystème open-source européen"
+
+# Optimisations Retype
 editor:
   enabled: true
+
 generator:
   recase: all
-links:
-- text: Gitlab
-  link: https://gitlab.com/
+  directoryIndex:
+    append: true
+  
+# Gestion des pages privées/draft
+include:
+  - "*.md"
+  - "!**/draft-*"
+  - "!**/private-*"
+  - "!**/WIP-*"
+
+# Configuration avancée
+search:
+  enabled: true
+  minChars: 2
+  
+# Navigation et structure
+navigation:
+  logo: ./static/logos/whims-bold.png
+  links:
+  - text: Accueil
+    link: /
+  - text: Fondamentaux
+    link: /learn-to-cloud/
+  - text: Kubernetes
+    link: /kubernetes/
+  - text: Git
+    link: /git/
+
+# Fonctionnalités avancées
+codeSnippet:
+  lineNumbers: true
+  title: auto
+  
+markdown:
+  lineBreaks: soft
+  
+# Personnalisation
+colors:
+  primary: "#2563eb"
+  secondary: "#64748b"
+  
+# Configuration des pages
+defaults:
+  layout: page
+  order: 1000
+  
+# Gestion des tags
+tags:
+  - fondamentaux
+  - outils 
+  - infrastructure
+  - kubernetes
+  - devops
+  - rex
+  - tutoriel
+  - migration
+  - monitoring
+  - securite
+
+# Footer personnalisé
 footer:
-  copyright: "&copy; Copyright {{ year }}. All rights reserved."
+  copyright: "&copy; Copyright {{ year }}. Blog Tech Cloud Native - Tous droits réservés."
+  links:
+  - text: RSS
+    link: /feed.xml
+  - text: Contact
+    link: mailto:contact@example.com

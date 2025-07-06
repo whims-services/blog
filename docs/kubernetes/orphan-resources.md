@@ -1,67 +1,98 @@
 ---
-icon: https://raw.githubusercontent.com/kubernetes/community/refs/heads/master/icons/svg/resources/unlabeled/ns.svg
+label: Nettoyage des Ressources Orphelines
+icon: ":broom:"
 tags:
-  - kubernetes
-  - namespace
+  - cleanup
+  - maintenance
+  - troubleshooting
+visibility: private
+draft: true
 ---
-# Detecting Orphaned Resources
 
-The efficient management of resources in Kubernetes is essential to maintain a clean and performant cluster. 
-However, it may happen that resources become orphaned, meaning they are no longer associated with an existing namespace.
+# Nettoyage des Ressources Orphelines Kubernetes
 
-## Context
+## Introduction
 
-When deleting a namespace in Kubernetes, it may happen that the process blocks due to remaining resources or unresolved finalizers.
-Forcing the finalization of a namespace can lead to orphaned resources, complicating the cluster management.
+Les ressources orphelines dans Kubernetes peuvent s'accumuler au fil du temps et causer des problèmes de performance et de sécurité. Cet article présente des méthodes pour identifier et nettoyer ces ressources.
 
-## Problem
+## Types de Ressources Orphelines
 
-Orphaned resources can cause various problems:
-- **Unused resource consumption:** They allocate space and system resources.
-- **Increased complexity:** They make debugging and maintenance more difficult.
-- **Conflicts risks:** They can conflict with new resources created later.
+### 1. Pods Orphelins
 
-## Solution
+```bash
+# Identifier les pods sans owner references
+kubectl get pods --all-namespaces -o json | jq '.items[] | select(.metadata.ownerReferences == null) | {name: .metadata.name, namespace: .metadata.namespace}'
+```
 
-To avoid these problems, it is crucial to diagnose and resolve the underlying causes of a namespace blocking.
-Here is a script that allows you to detect orphaned resources in a Kubernetes cluster:
+### 2. PersistentVolumes Non Utilisés
+
+```bash
+# Lister les PV en statut Available
+kubectl get pv --all-namespaces | grep Available
+```
+
+### 3. ConfigMaps et Secrets Inutilisés
+
+```bash
+# Script pour identifier les ConfigMaps non référencés
+kubectl get configmaps --all-namespaces -o json | jq -r '.items[] | "\(.metadata.namespace) \(.metadata.name)"'
+```
+
+## Scripts de Nettoyage
+
+### Nettoyage Automatisé
 
 ```bash
 #!/bin/bash
+# cleanup-orphans.sh
 
-# Get the list of current namespaces in the cluster
-current_namespaces=(\$(kubectl get ns --no-headers | awk '{print \$1}'))
+echo "Nettoyage des ressources orphelines..."
 
-# Get the list of API resources that are namespaced (associated with a namespace)
-api_resources=(\$(kubectl api-resources --verbs=list --namespaced -o name))
+# Supprimer les pods Failed/Succeeded
+kubectl delete pods --all-namespaces --field-selector=status.phase=Succeeded
+kubectl delete pods --all-namespaces --field-selector=status.phase=Failed
 
-# Iterate over each API resource
-for api_resource in \${api_resources[@]}; do
-    # Read each line of the output of the kubectl get command for the current API resource
-    while IFS= read -r line; do
-        # Extract the namespace from the resource from the line
-        resource_namespace=\$(echo \$line | awk '{print \$1}')
-        # Extract the name of the resource from the line
-        resource_name=\$(echo \$line | awk '{print \$2}')
+# Nettoyer les PV Available
+kubectl get pv | grep Available | awk '{print $1}' | xargs kubectl delete pv
 
-        # Check if the resource namespace does not exist in the list of current namespaces
-        if [[ ! " \${current_namespaces[@]} " =~ " \$resource_namespace " ]]; then
-            # If the namespace does not exist, display the API resource, the namespace and the resource name
-            echo "api-resource: \${api_resource} - namespace: ${resource_namespace} - resource name: ${resource_name}"
-        fi
-        # Read the resources for the current API resource in all namespaces, ignoring errors if the namespace does not exist
-    done < <(kubectl get \$api_resource -A --ignore-not-found --no-headers -o custom-columns="NAMESPACE:.metadata.namespace,NAME:.metadata.name")
-done
+echo "Nettoyage terminé."
 ```
 
-## Usage
+## Monitoring et Alerting
 
-To use the script, save it to a file and make it executable:
+### Métriques Prometheus
 
-```bash
-chmod +x detect-orphan-resources.sh
-./detect-orphan-resources.sh
+```yaml
+# Alerte pour ressources orphelines
+- alert: OrphanedPods
+  expr: kube_pod_owner{owner_kind=""} > 0
+  for: 5m
+  labels:
+    severity: warning
 ```
 
-Sources:
-* [Reddit](https://www.reddit.com/r/kubernetes/comments/1j5644x/why_you_should_not_forcefully_finalize_a/)
+## Bonnes Pratiques
+
+### 1. Labels et Annotations
+
+```yaml
+metadata:
+  labels:
+    app: myapp
+    version: v1.0
+    managed-by: helm
+  annotations:
+    cleanup.policy: "delete-after-30d"
+```
+
+### 2. Finalizers
+
+```yaml
+metadata:
+  finalizers:
+    - cleanup.example.com/cleanup-volumes
+```
+
+## Conclusion
+
+Un nettoyage régulier des ressources orphelines est essentiel pour maintenir un cluster Kubernetes sain et performant.

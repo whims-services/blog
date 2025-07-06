@@ -1,0 +1,27 @@
+# Configuration locale Retype
+# Ce fichier permet de personnaliser le comportement de Retype en mode développement
+
+# Mode draft - Afficher les pages privées en développement
+include:
+  - "**/*.md"
+  - "!**/draft-*"   # Exclure les drafts par défaut
+  - "!**/private-*" # Exclure les pages privées par défaut
+  - "!**/WIP-*"     # Exclure les work-in-progress
+
+# Pour activer une page spécifique en mode développement :
+# 1. Supprimer la ligne `draft: true` du frontmatter
+# 2. Ou ajouter le fichier spécifique dans la section include ci-dessus
+
+# Configuration pour le mode développement
+dev:
+  port: 5000
+  host: localhost
+  open: true
+
+# Configuration pour le mode production
+production:
+  exclude:
+    - "**/*draft*"
+    - "**/*private*"
+    - "**/*WIP*"
+    - "**/*test*" 

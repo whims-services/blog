@@ -1,8 +1,10 @@
-label: Learn to Cloud
-expanded: true
-order: -3
-icon: https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/cloud.svg
+label: Fondamentaux Cloud Native
+icon: ":cloud:"
+order: 100
+visibility: private
+draft: true
 tags:
-  - cloud
-  - career
-  - learning-path 
+  - cloud-native
+  - infrastructure
+  - career-path
+  - hands-on 

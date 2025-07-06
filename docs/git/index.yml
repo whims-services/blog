@@ -1,6 +1,9 @@
 label: Git
-expanded: true
-order: -2
-icon: https://git-scm.com/images/logos/downloads/Git-Icon-1788C.svg
+icon: ":octocat:"
+order: 300
+visibility: private
+draft: true
 tags:
   - git
+  - version-control
+  - collaboration

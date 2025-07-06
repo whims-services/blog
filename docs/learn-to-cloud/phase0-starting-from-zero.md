@@ -1,105 +1,175 @@
 ---
-icon: https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/rocket.svg
-tags:
-  - cloud
-  - beginners
-  - career
-  - fundamentals
-  - sovereignty
----
-# Phase 0: Reprendre le Contrôle de Son Parcours Tech
-
-Alors, vous voulez vous lancer dans l'ingénierie cloud ? Excellente nouvelle ! Mais laissez-moi vous dire une chose : il est temps de reprendre le contrôle de notre destin technologique. Fini l'époque où l'on subissait les choix des géants américains sans broncher.
-
-Si vous partez de zéro, cette phase est conçue pour vous. Si vous êtes déjà dans la tech et que vous voulez basculer vers le cloud souverain, creusons ensemble les bases.
-
-## Pourquoi le Cloud Souverain ?
-
-Avant de plonger dans les aspects techniques, parlons philosophie. Chaque choix technologique que vous ferez dans votre carrière est un acte politique. Alors, autant le faire en conscience !
-
-### Les Fondamentaux du Cloud Libre
-
-**Linux : Notre Système de Liberté**
-Linux n'est pas qu'un système d'exploitation, c'est le symbole de notre indépendance technologique. Contrairement aux solutions propriétaires, Linux vous donne le contrôle total. C'est l'épine dorsale de 90% des infrastructures cloud modernes.
-
-**Networking : Comprendre les Autoroutes de Données**
-Les réseaux, c'est comme le système routier : il faut comprendre comment les données circulent pour optimiser les performances. Et contrairement aux "boîtes noires" propriétaires, les outils open-source nous permettent de voir sous le capot.
-
-**Programmation : Votre Superpouvoir d'Automatisation**
-Python, Go, Bash... Ces langages sont vos alliés pour automatiser tout ce qui peut l'être. Pas besoin de licences coûteuses, juste votre créativité et du code libre.
-
-**Cloud Computing : L'Art de la Virtualisation Distribuée**
-Le cloud, c'est démocratiser l'accès aux ressources informatiques. Mais attention aux sirènes du vendor lock-in ! Privilégions les solutions ouvertes et portables.
-
-**DevOps : Culture de la Collaboration**
-DevOps n'est pas un poste, c'est une philosophie ! Une culture qui prône la collaboration, l'automatisation et l'amélioration continue. Avec des outils libres et une communauté bienveillante.
-
-## Compétences à acquérir à la fin de cette phase
-
-1. **Compréhension claire des bases** de l'informatique et du cloud computing
-2. **Préparation à l'apprentissage continu**, car le domaine tech évolue constamment
-3. **Décision ferme** de poursuivre une carrière dans la tech
-4. **Vocabulaire technique** de base pour communiquer avec les équipes
-
-## Certifications à considérer
-
-### CompTIA A+
-Une norme industrielle pour les personnes qui entrent dans la tech.
-
-- **Est-ce nécessaire ?** Non
-- **Est-ce utile ?** Ça dépend de votre style d'apprentissage
-- **Devriez-vous la passer ?** Elle peut être bénéfique pour votre CV et vous aider à décrocher des rôles de support
-
-### Certifications Open Source et Européennes
-- **Linux Foundation Certified System Administrator** : Maîtrise de Linux
-- **Kubernetes and Cloud Native Associate** : Fondamentaux cloud native
-- **Red Hat Certified System Administrator** : Compétences entreprise
-- **OVHcloud Certified Operator** : Expertise du cloud français
-
-## Emplois d'entrée de gamme
-
-Commencer dans un rôle de support est un excellent moyen d'entrer dans l'industrie tech. Ces postes sont souvent accessibles aux débutants et peuvent offrir :
-
-- Matériel éducatif gratuit
-- Remboursement des certifications
-- Expérience pratique
-- Mentorat interne
-
-### Types de postes orientés Open Source
-- **Technicien Support Linux**
-- **Administrateur Systèmes Open Source**
-- **Support Engineer Cloud Native**
-- **Spécialiste Infrastructure Libre**
-
-## Ressources d'apprentissage
-
-### Formations libres et gratuites
-- **Linux Foundation** : Formations Linux et cloud native
-- **Red Hat Training** : Cours ouverts et certifications
-- **OVHcloud Academy** : Formation cloud européen
-- **Université Numérique** : Cursus français en ligne
-
-### Communautés francophones
-- **LinuxFr** : La communauté Linux historique
-- **Discord DevOps FR** : Entraide entre professionnels
-- **Forum Ubuntu-fr** : Support communautaire
-- **Stack Overflow en français** : Questions/réponses techniques
-
-## Prochaines étapes
-
-Une fois cette phase terminée, vous serez prêt pour :
-- **Phase 1** : Maîtrise de Linux et des réseaux libres
-- **Phase 2** : Programmation et automatisation open source
-- **Phase 3** : Plateformes cloud souveraines (OVHcloud, Scaleway, self-hosting)
-
-## Conseils pratiques
-
-1. **Restez constant** dans votre apprentissage (30 min/jour minimum)
-2. **Pratiquez activement** ce que vous apprenez
-3. **Rejoignez des communautés** pour rester motivé
-4. **Documentez votre progression** (blog, GitHub)
-5. **Networking** : connectez-vous avec d'autres apprenants
-
+label: Reprendre le Contrôle de Son Parcours Tech
+icon: ":rocket:"
+order: 1
+tags: [fondamentaux, career]
+visibility: private
+draft: true
 ---
 
-*Ensemble, construisons un écosystème technologique français et européen fort, basé sur l'open source et la souveraineté numérique. Parce que notre avenir technologique nous appartient !* 
+# Reprendre le Contrôle de Son Parcours Tech
+
+Hier, un junior de l'équipe me demandait comment j'en étais arrivé là. Assis dans mon bureau, face à mes trois écrans affichant Grafana, Kubernetes et un terminal, je me suis dit : "Merde, comment je résume 12 ans de galère et de réussites ?"
+
+## Mon Parcours : De la Galère à la Passion
+
+### Les Débuts Chaotiques
+
+J'ai commencé par faire n'importe quoi. Vraiment. En 2012, j'installais Ubuntu sur tous les vieux PCs que je pouvais trouver. Ma première "infrastructure" ? Un Raspberry Pi dans ma chambre d'étudiant qui servait de serveur web. J'étais fier comme un paon, même si ça plantait deux fois par jour.
+
+### La Révélation : Pourquoi J'ai Choisi Cette Voie
+
+Le déclic est venu lors d'un stage en 2013. J'ai vu un ingénieur faire du déploiement automatisé avec des outils open-source. Pas de licences Microsoft à 10 000€, pas de dépendance à des solutions propriétaires. Just du code, de l'automatisation, et une liberté totale.
+
+"C'est ça que je veux faire", je me suis dit. Et depuis, chaque choix technique que je fais est guidé par cette philosophie.
+
+## Les Fondamentaux : Par Où Commencer Vraiment
+
+### 1. Linux : La Base Incontournable
+
+**Mon REX après 12 ans :** Ne perdez pas de temps avec Windows Server. Linux, c'est la base de tout dans le cloud native. J'ai perdu 6 mois à essayer de faire du Docker sur Windows en 2016. Autant dire que j'ai appris de mes erreurs.
+
+**Ce que je recommande :**
+- Installez Ubuntu ou Debian sur votre machine (dual-boot au minimum)
+- Forcez-vous à utiliser le terminal pour TOUT
+- Après 3 mois, vous serez à l'aise. Après 6 mois, vous ne pourrez plus vous en passer.
+
+### 2. Programmation : L'Automatisation Avant Tout
+
+**Mon apprentissage :** J'ai commencé par du Bash. Puis Python. Puis Go. Chaque langage avait sa logique dans mon évolution.
+
+**Pourquoi ces langages ?**
+- **Bash** : 80% de mes automatisations quotidiennes
+- **Python** : Scripts, APIs, traitement de données
+- **Go** : Performance, outils cloud native
+
+**Erreur à éviter :** Ne vous dispersez pas. Maîtrisez UN langage avant de passer au suivant.
+
+### 3. Containers : La Révolution Qui Change Tout
+
+**Mon histoire Docker/Podman :** J'ai utilisé Docker pendant 4 ans. Puis j'ai découvert Podman. Migration terminée en 2 semaines, et je n'ai jamais regretté.
+
+**Pourquoi Podman ?**
+- Pas de daemon (sécurité++)
+- Rootless par défaut
+- Compatible Docker mais sans les dépendances propriétaires
+
+**Mon conseil :** Apprenez les concepts avec Docker si vous voulez, mais migrez vers Podman dès que possible.
+
+## La Certification : Investissement ou Perte de Temps ?
+
+### Mon Expérience Personnelle
+
+J'ai passé 3 certifications en 5 ans :
+- **LFCS** (Linux Foundation) : 2019 - Super utile
+- **CKA** (Kubernetes Administrator) : 2021 - Indispensable
+- **LFCE** (Linux Foundation Engineer) : 2023 - Perfectionnement
+
+**ROI concret :** +40% de salaire en 3 ans. Pas mal pour quelques mois d'étude.
+
+### Les Certifications Qui Valent le Coup
+
+**Évitez les certifications propriétaires.** Misez sur :
+- **Linux Foundation** : Reconnues partout, vraiment techniques
+- **Red Hat** : Excellente réputation, hands-on
+- **CNCF** : L'avenir du cloud native
+
+## Communauté : Trouvez Votre Tribu
+
+### Ma Découverte des Communautés
+
+En 2018, j'étais isolé. Je bossais seul, j'apprenais seul, je galérais seul. Puis j'ai découvert les communautés techniques françaises. Ça a changé ma carrière.
+
+**Ce que ça m'a apporté :**
+- Réponses à mes questions techniques
+- Veille technologique collaborative
+- Opportunités professionnelles
+- Motivation et inspiration
+
+### Où Aller En Priorité
+
+**Communautés françaises actives :**
+- **Discord DevOps FR** : Discussions quotidiennes, aide technique
+- **Slack Cloud Native FR** : Focus sur Kubernetes et cloud native
+- **Forums technique français** : Discussions approfondies
+
+**Meetups et événements :**
+- **DevOpsDays Paris** : Networking et retours d'expérience
+- **Kubernetes Community Days** : Spécialisé mais excellent
+- **Devoxx France** : Le plus gros événement tech français
+
+## Mes Erreurs : Apprenez de Mes Galères
+
+### Erreur #1 : Apprendre Sans Pratiquer
+
+J'ai passé 6 mois à regarder des tutoriels Kubernetes sans jamais créer un cluster. **Résultat :** J'ai tout oublié.
+
+**La solution :** Un homelab. Même basique. Même cassé. L'important c'est de mettre les mains dans le cambouis.
+
+### Erreur #2 : Vouloir Tout Apprendre En Même Temps
+
+En 2017, j'ai voulu apprendre Docker, Kubernetes, Terraform, Ansible et Jenkins en parallèle. **Résultat :** J'ai tout survolé, rien maîtrisé.
+
+**La solution :** Une techno à la fois. Maîtrisez, pratiquez, puis passez à la suivante.
+
+### Erreur #3 : Négliger la Théorie
+
+J'étais tellement pressé de pratiquer que j'ai zappé les concepts fondamentaux. **Résultat :** J'ai mis 2 ans à comprendre pourquoi mes architectures étaient bancales.
+
+**La solution :** Alternez théorie et pratique. Lisez, comprenez, puis implémentez.
+
+## Votre Roadmap : Les 6 Premiers Mois
+
+### Mois 1-2 : Les Bases
+- **Linux** : Installation, terminal, commandes de base
+- **Git** : Versioning, collaboration
+- **Un langage** : Python ou Go selon vos préférences
+
+### Mois 3-4 : L'Automatisation
+- **Bash scripting** : Automatisez vos tâches répétitives
+- **Infrastructure as Code** : Terraform ou Pulumi
+- **CI/CD** : GitLab CI ou GitHub Actions
+
+### Mois 5-6 : Le Cloud Native
+- **Containers** : Podman, création d'images
+- **Orchestration** : Kubernetes (les bases)
+- **Monitoring** : Prometheus + Grafana
+
+## Budget : Combien Ça Coûte Vraiment ?
+
+### Mon Budget Annuel (2024)
+
+**Matériel :**
+- Homelab : 800€ (serveur d'occasion + stockage)
+- Laptop : 1200€ (ThinkPad reconditionné)
+
+**Formation :**
+- Certifications : 400€/an
+- Livres et ressources : 200€/an
+- Conférences : 1000€/an
+
+**Cloud :**
+- Hébergement personnel : 50€/mois (OVHcloud)
+- Tests et expérimentations : 30€/mois
+
+**Total annuel : ~3000€**
+
+**ROI :** Mon augmentation de salaire couvre largement ces investissements.
+
+## Conclusion : Votre Parcours Commence Maintenant
+
+Il y a 12 ans, j'étais un étudiant qui installait Ubuntu sur des vieux PCs. Aujourd'hui, je gère l'infrastructure cloud native d'une scale-up avec 200 développeurs. 
+
+**Le secret ?** Pas de secret. De la curiosité, de la pratique, des erreurs assumées et une communauté qui m'a porté.
+
+**Votre mission pour les 2 prochaines semaines :**
+1. Installez Linux sur votre machine
+2. Créez votre premier script Bash
+3. Rejoignez une communauté technique
+4. Commencez votre homelab (même basique)
+
+**Et surtout :** Documentez votre parcours. Dans 2 ans, vous serez étonné du chemin parcouru.
+
+---
+
+*Article rédigé après 12 ans d'expérience, 47 projets en production, et quelques nuits blanches. Mais que de souvenirs !* 
