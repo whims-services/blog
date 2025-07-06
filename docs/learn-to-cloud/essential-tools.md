@@ -5,15 +5,17 @@ tags:
   - cloud
   - devops
   - productivity
+  - open-source
+  - sovereignty
 ---
-# Outils Essentiels pour Cloud Engineers
+# Boîte à Outils du Cloud Engineer Souverain
 
-Maîtriser les bons outils est crucial pour une carrière réussie dans le cloud. Voici les outils indispensables organisés par catégorie.
+Alors, parlons outils ! Mais pas n'importe lesquels : des outils libres, souverains et qui respectent vos données. Laissez-moi vous présenter la boîte à outils idéale pour un cloud engineer engagé.
 
-## Command Line & Shell
+## Terminal et Shell : Votre Cockpit de Pilotage
 
-### Terminal Modern
-**Starship** - Prompt shell ultra-rapide et personnalisable
+### Terminal Moderne et Libre
+**Starship** - Prompt shell ultra-rapide et personnalisable (écrit en Rust !)
 ```bash
 # Installation
 curl -sS https://starship.rs/install.sh | sh
@@ -22,119 +24,162 @@ curl -sS https://starship.rs/install.sh | sh
 [directory]
 truncation_length = 3
 truncate_to_repo = false
+
+[kubernetes]
+disabled = false
 ```
 
-**Oh My Zsh** - Framework pour shell Zsh
+**Oh My Zsh** - Framework pour shell Zsh (100% open source)
 ```bash
 # Installation
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# Plugins recommandés
-plugins=(git docker kubectl terraform aws)
+# Plugins souverains recommandés
+plugins=(git podman kubectl terraform ansible)
 ```
 
-### Gestionnaires de Paquets
+### Gestionnaires de Paquets Libres
 - **Homebrew** (macOS/Linux) : `brew install <package>`
-- **Chocolatey** (Windows) : `choco install <package>`
-- **apt/yum** (Linux) : Gestionnaires système
+- **Nix** (Multi-platform) : Gestionnaire déclaratif
+- **Flatpak** (Linux) : Applications sandboxées
+- **APT/DNF** (Linux) : Gestionnaires système
 
-## Cloud CLI Tools
+## CLI Tools Cloud Souverains
 
-### AWS CLI
+### OVHcloud CLI
 ```bash
 # Installation
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install
+pip install ovh
 
 # Configuration
-aws configure
+ovh setup
+
+# Utilisation
+ovh cloud project instance list
+ovh cloud project storage list
 ```
 
-### Azure CLI
+### Scaleway CLI
 ```bash
 # Installation
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+curl -o scw https://github.com/scaleway/scaleway-cli/releases/latest/download/scw-linux-x86_64
+chmod +x scw && sudo mv scw /usr/local/bin/
 
-# Login
-az login
+# Configuration
+scw init
+
+# Utilisation
+scw instance server list
+scw object bucket list
 ```
 
-### Google Cloud CLI
+### OpenStack CLI (Clouds Privés)
 ```bash
 # Installation
-curl https://sdk.cloud.google.com | bash
+pip install python-openstackclient
 
-# Initialisation
-gcloud init
+# Configuration via fichier RC
+source openrc
+
+# Utilisation
+openstack server list
+openstack volume list
 ```
 
-## Infrastructure as Code
+## Infrastructure as Code Libre
 
-### Terraform
-**Le standard pour IaC multi-cloud**
-
+### Terraform avec Providers Européens
 ```hcl
-# Configuration basique
+# Configuration OVHcloud
 terraform {
   required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
+    ovh = {
+      source  = "ovh/ovh"
+      version = "~> 0.35"
     }
   }
 }
 
-provider "aws" {
-  region = var.aws_region
+provider "ovh" {
+  endpoint = "ovh-eu"
+}
+
+resource "ovh_cloud_project_instance" "web" {
+  service_name = var.service_name
+  name         = "WebServer"
+  flavor_name  = "s1-2"
+  image_name   = "Ubuntu 22.04"
+  region       = "GRA11"
 }
 ```
 
-**Outils complémentaires :**
-- **tfenv** : Gestionnaire de versions Terraform
-- **terraform-docs** : Documentation automatique
-- **tflint** : Linter pour Terraform
-
-### Pulumi
-**IaC avec des langages de programmation**
-```python
-import pulumi
-import pulumi_aws as aws
-
-# Créer un bucket S3
-bucket = aws.s3.Bucket("my-bucket",
-    versioning=aws.s3.BucketVersioningArgs(
-        enabled=True,
-    ))
+### OpenTofu (Fork Libre de Terraform)
+```bash
+# Installation
+wget https://github.com/opentofu/opentofu/releases/download/v1.6.0/tofu_1.6.0_linux_amd64.zip
+unzip tofu_1.6.0_linux_amd64.zip
+sudo mv tofu /usr/local/bin/
 ```
 
-### CloudFormation / ARM Templates
-- **AWS CloudFormation** : IaC natif AWS
-- **Azure ARM Templates** : IaC natif Azure
-- **Google Cloud Deployment Manager** : IaC natif GCP
-
-## Containerisation & Orchestration
-
-### Docker
-```dockerfile
-# Dockerfile basique
-FROM node:18-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-EXPOSE 3000
-CMD ["npm", "start"]
-```
-
-**Outils Docker utiles :**
-- **Docker Compose** : Applications multi-containers
-- **Dive** : Analyse des layers d'images
-- **Portainer** : Interface web pour Docker
-
-### Kubernetes
+### Ansible - Configuration as Code
 ```yaml
-# Déploiement basique
+# playbook.yml
+---
+- name: Configuration serveur web
+  hosts: webservers
+  become: yes
+  
+  tasks:
+    - name: Installation nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+    
+    - name: Démarrage nginx
+      systemd:
+        name: nginx
+        state: started
+        enabled: yes
+    
+    - name: Configuration firewall
+      ufw:
+        rule: allow
+        port: '80'
+        proto: tcp
+```
+
+## Containerisation Souveraine
+
+### Podman : L'Alternative Sans Daemon
+```bash
+# Installation (Fedora/RHEL)
+sudo dnf install podman
+
+# Installation (Ubuntu/Debian)
+sudo apt install podman
+
+# Utilisation (commandes identiques à Docker)
+podman run -it registry.fedoraproject.org/fedora:latest bash
+podman build -t myapp .
+podman pod create --name mypod
+```
+
+### Buildah : Construction d'Images
+```bash
+# Installation
+sudo dnf install buildah
+
+# Construction d'image
+buildah from scratch
+buildah run working-container -- dnf install -y nginx
+buildah config --entrypoint /usr/sbin/nginx working-container
+buildah commit working-container nginx-custom
+```
+
+### Kubernetes : L'Orchestration Libre
+```yaml
+# deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -154,77 +199,104 @@ spec:
         image: myapp:latest
         ports:
         - containerPort: 8080
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
 ```
 
 **Outils Kubernetes essentiels :**
 - **kubectl** : CLI officiel Kubernetes
 - **Helm** : Gestionnaire de packages K8s
-- **k9s** : Interface terminal pour K8s
+- **k9s** : Interface terminal interactive
 - **kubectx/kubens** : Changement de contexte rapide
 
-## CI/CD & Automation
+## CI/CD Open Source
 
-### GitHub Actions
-```yaml
-# .github/workflows/ci.yml
-name: CI/CD Pipeline
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Run tests
-      run: npm test
-    
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    steps:
-    - name: Deploy to production
-      run: echo "Deploying..."
-```
-
-### Jenkins
-- **Pipeline as Code** avec Jenkinsfile
-- **Blue Ocean** : Interface moderne
-- **Plugins** : Écosystème riche
-
-### GitLab CI
+### GitLab CI/CD
 ```yaml
 # .gitlab-ci.yml
 stages:
-  - build
   - test
+  - build
   - deploy
 
-build_job:
-  stage: build
-  script:
-    - echo "Building..."
-
-test_job:
+test:
   stage: test
   script:
-    - echo "Testing..."
+    - npm test
+  only:
+    - merge_requests
+    - main
 
-deploy_job:
+build:
+  stage: build
+  script:
+    - podman build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
+    - podman push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+  only:
+    - main
+
+deploy:
   stage: deploy
   script:
-    - echo "Deploying..."
+    - kubectl set image deployment/app app=$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
   only:
     - main
 ```
 
-## Monitoring & Observability
+### Jenkins Pipeline
+```groovy
+pipeline {
+    agent any
+    
+    stages {
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                sh 'podman build -t myapp:${BUILD_NUMBER} .'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                sh 'kubectl set image deployment/app app=myapp:${BUILD_NUMBER}'
+            }
+        }
+    }
+}
+```
 
-### Prometheus + Grafana
+### Tekton (Cloud Native CI/CD)
+```yaml
+# task.yaml
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: build-and-deploy
+spec:
+  steps:
+  - name: build
+    image: quay.io/buildah/stable
+    script: |
+      buildah build -t $(params.image-name) .
+  - name: deploy
+    image: bitnami/kubectl
+    script: |
+      kubectl set image deployment/app app=$(params.image-name)
+```
+
+## Observabilité Communautaire
+
+### Prometheus Stack
 ```yaml
 # prometheus.yml
 global:
@@ -235,165 +307,278 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
   
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['localhost:9100']
+  
   - job_name: 'app'
     static_configs:
-      - targets: ['app:8080']
+      - targets: ['localhost:8080']
 ```
 
-### ELK Stack (Elasticsearch, Logstash, Kibana)
-- **Elasticsearch** : Moteur de recherche
-- **Logstash** : Ingestion et transformation
-- **Kibana** : Visualisation
-
-### Outils Cloud-Native
-- **AWS CloudWatch** : Monitoring AWS
-- **Azure Monitor** : Monitoring Azure
-- **Google Cloud Operations** : Monitoring GCP
-
-## Sécurité & Secrets Management
-
-### HashiCorp Vault
+### Grafana - Visualisation Universelle
 ```bash
-# Démarrage du serveur dev
+# Installation via Podman
+podman run -d \
+  -p 3000:3000 \
+  --name grafana \
+  -v grafana-storage:/var/lib/grafana \
+  grafana/grafana
+
+# Configuration datasource via API
+curl -X POST \
+  http://admin:admin@localhost:3000/api/datasources \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "name": "Prometheus",
+    "type": "prometheus",
+    "url": "http://prometheus:9090",
+    "access": "proxy"
+  }'
+```
+
+### Jaeger - Tracing Distribué
+```yaml
+# jaeger-all-in-one.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaeger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jaeger
+  template:
+    metadata:
+      labels:
+        app: jaeger
+    spec:
+      containers:
+      - name: jaeger
+        image: jaegertracing/all-in-one:latest
+        ports:
+        - containerPort: 14268
+        - containerPort: 16686
+```
+
+## Sécurité et Secrets Souverains
+
+### Vault - Gestion de Secrets
+```bash
+# Installation
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+sudo apt-get update && sudo apt-get install vault
+
+# Démarrage développement
 vault server -dev
 
-# Stockage d'un secret
-vault kv put secret/myapp/config username=admin password=secret
+# Utilisation
+vault kv put secret/myapp username=admin password=secret123
+vault kv get secret/myapp
 ```
 
-### AWS Secrets Manager / Azure Key Vault
+### SOPS - Secrets dans Git
 ```bash
-# AWS Secrets Manager
-aws secretsmanager create-secret \
-    --name MySecret \
-    --secret-string '{"username":"admin","password":"secret"}'
+# Installation
+wget https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
+chmod +x sops-v3.7.3.linux
+sudo mv sops-v3.7.3.linux /usr/local/bin/sops
 
-# Azure Key Vault
-az keyvault secret set \
-    --vault-name MyKeyVault \
-    --name MySecret \
-    --value "secret-value"
+# Configuration avec age
+age-keygen -o ~/.config/age/keys.txt
+export SOPS_AGE_KEY_FILE=~/.config/age/keys.txt
+
+# Chiffrement
+sops -e --age age1abc123... secrets.yaml > secrets.enc.yaml
 ```
 
-### Sécurité Statique
-- **Checkov** : Analyse de sécurité IaC
-- **Terrascan** : Scanner de sécurité
-- **SonarQube** : Qualité et sécurité du code
+### Alternatives Européennes
+- **Passbolt** : Gestionnaire de mots de passe collaboratif français
+- **Bitwarden** : Self-hosted, code source ouvert
+- **KeePass** : Gestionnaire local, formats ouverts
 
-## Éditeurs & IDE
+## Développement avec des Outils Libres
 
-### VS Code
-**Extensions essentielles :**
-- **Terraform** : Syntax highlighting et validation
-- **Docker** : Gestion des containers
-- **Kubernetes** : Outils K8s intégrés
-- **AWS Toolkit** : Intégration AWS
-- **Azure Tools** : Intégration Azure
-- **Git Graph** : Visualisation git
-
-### Configuration recommandée
-```json
-{
-  "editor.formatOnSave": true,
-  "terraform.format.enable": true,
-  "docker.truncateLongRegistryPaths": true,
-  "kubernetes.vs-code-api-version": "v1"
-}
-```
-
-## Productivity Tools
-
-### Documentation
-- **Notion** : Documentation collaborative
-- **Obsidian** : Notes liées et knowledge base
-- **GitBook** : Documentation technique
-
-### Diagrammes
-- **Draw.io** : Diagrammes techniques
-- **Lucidchart** : Diagrammes professionnels
-- **Mermaid** : Diagrammes as code
-
-```mermaid
-graph TD
-    A[Developer] --> B[Git Push]
-    B --> C[CI/CD Pipeline]
-    C --> D[Build & Test]
-    D --> E[Deploy to Staging]
-    E --> F[Deploy to Production]
-```
-
-### Communication
-- **Slack** : Communication d'équipe
-- **Discord** : Communautés techniques
-- **Microsoft Teams** : Collaboration d'entreprise
-
-## Langages & Scripting
-
-### Python
-```python
-# Exemple avec boto3 (AWS SDK)
-import boto3
-
-s3 = boto3.client('s3')
-response = s3.list_buckets()
-
-for bucket in response['Buckets']:
-    print(f"Bucket: {bucket['Name']}")
-```
-
-### Bash/Shell
+### VS Codium (VS Code sans Télémétrie)
 ```bash
-#!/bin/bash
+# Installation
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
+echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
+sudo apt update && sudo apt install codium
+```
+
+### Neovim - Éditeur Modal Moderne
+```bash
+# Installation
+sudo apt install neovim
+
+# Configuration ~/.config/nvim/init.vim
+set number
+set autoindent
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set mouse=a
+
+" Plugin manager: vim-plug
+call plug#begin()
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+call plug#end()
+```
+
+## Networking et Diagnostic
+
+### Outils de Diagnostic Réseau
+```bash
+# Installation d'outils essentiels
+sudo apt install net-tools dnsutils tcpdump wireshark-cli
+
+# Diagnostic réseau
+ss -tuln                    # Ports ouverts
+dig google.com             # Résolution DNS
+tcpdump -i eth0 port 80    # Capture de trafic
+nmap -sn 192.168.1.0/24    # Scan réseau
+```
+
+### Monitoring Réseau
+```bash
+# Installation iftop
+sudo apt install iftop
+
+# Utilisation
+sudo iftop -i eth0          # Trafic par interface
+sudo iftop -n              # Pas de résolution DNS
+```
+
+## Gestionnaires de Secrets Locaux
+
+### Pass - Gestionnaire Unix Standard
+```bash
+# Installation
+sudo apt install pass
+
+# Initialisation
+gpg --gen-key
+pass init "votre@email.com"
+
+# Utilisation
+pass insert aws/access-key
+pass show aws/access-key
+pass generate aws/secret-key 32
+```
+
+### Direnv - Variables d'Environnement par Projet
+```bash
+# Installation
+curl -sfL https://direnv.net/install.sh | bash
+
+# Configuration ~/.bashrc
+eval "$(direnv hook bash)"
+
+# Utilisation dans un projet
+echo "export API_KEY=secret123" > .envrc
+direnv allow
+```
+
+## Outils de Communication Libres
+
+### Element (Matrix)
+Alternative décentralisée à Slack/Discord
+```bash
+# Installation
+sudo apt install element-desktop
+
+# Ou via Flatpak
+flatpak install flathub im.riot.Riot
+```
+
+### Mattermost
+Plateforme de collaboration auto-hébergée
+```bash
+# Installation via Docker
+podman run -d \
+  --name mattermost \
+  -p 8065:8065 \
+  -v mattermost-data:/mattermost/data \
+  mattermost/mattermost-enterprise-edition
+```
+
+## L'Écosystème Français
+
+### Pépites Françaises
+- **Linagora** : Solutions collaboratives open source
+- **Cozy Cloud** : Cloud personnel et souverain
+- **Framasoft** : Promotion du logiciel libre
+- **Wifirst** : Réseau et cloud français
+
+### Distributions Linux Françaises
+- **Mageia** : Distribution communautaire
+- **Emmabuntüs** : Distribution solidaire
+- **Primtux** : Distribution éducative
+
+## Conseils de Productivité Souveraine
+
+### Automatisation Quotidienne
+```bash
 # Script de déploiement
+#!/bin/bash
 set -e
 
-echo "Déploiement en cours..."
-docker build -t myapp .
-docker push myapp:latest
-kubectl apply -f deployment.yaml
-echo "Déploiement terminé !"
+echo "🚀 Déploiement en cours..."
+git pull origin main
+podman build -t myapp:latest .
+kubectl set image deployment/app app=myapp:latest
+echo "✅ Déploiement terminé !"
 ```
 
-### Go
-```go
-// Exemple d'API simple
-package main
+### Makefile pour Standardiser
+```makefile
+# Makefile
+.PHONY: build deploy test
 
-import (
-    "fmt"
-    "net/http"
-)
+build:
+	podman build -t myapp:latest .
 
-func main() {
-    http.HandleFunc("/", handler)
-    http.ListenAndServe(":8080", nil)
-}
+test:
+	npm test
 
-func handler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "Hello, Cloud World!")
-}
+deploy: build
+	kubectl set image deployment/app app=myapp:latest
+
+clean:
+	podman rmi myapp:latest
 ```
 
-## Conseils d'Utilisation
+### Aliases Utiles
+```bash
+# ~/.bashrc
+alias k='kubectl'
+alias kgp='kubectl get pods'
+alias kgs='kubectl get services'
+alias ll='ls -la'
+alias tf='terraform'
+alias tfa='terraform apply'
+alias tfp='terraform plan'
+```
 
-### Automatisation
-1. **Automatisez tout** ce qui peut l'être
-2. **Scripting** pour les tâches répétitives
-3. **Templates** pour les configurations communes
-4. **Aliases** pour les commandes fréquentes
-
-### Organisation
-1. **Dotfiles** : Versionner vos configurations
-2. **Workspaces** : Séparer les environnements
-3. **Documentation** : Documenter vos processus
-4. **Backup** : Sauvegarder vos configurations
+## Ressources et Communautés
 
 ### Apprentissage Continu
-1. **Labs pratiques** : Expérimenter avec les outils
-2. **Projets personnels** : Appliquer les connaissances
-3. **Communautés** : Partager et apprendre
-4. **Veille technologique** : Rester à jour
+- **LinuxFr** : Actualités et tutoriels
+- **Open Source Guide** : Bonnes pratiques
+- **CNCF Landscape** : Écosystème cloud native
+- **Kubernetes Academy** : Formation gratuite
+
+### Contribution
+- **Documentation** de projets français
+- **Issues** sur GitHub/GitLab
+- **Traductions** d'outils open source
+- **Modules** Terraform/Ansible
 
 ---
 
-*La maîtrise des outils ne fait pas tout, mais elle vous permet de vous concentrer sur la résolution de problèmes plutôt que sur les détails techniques.* 
+*Les outils que vous choisissez reflètent vos valeurs. Privilégions des solutions libres, ouvertes et respectueuses de notre souveraineté numérique ! Ensemble, construisons un écosystème technologique français fort et éthique.* 

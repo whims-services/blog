@@ -5,33 +5,34 @@ tags:
   - beginners
   - career
   - fundamentals
+  - sovereignty
 ---
-# Phase 0: Starting from Zero
+# Phase 0: Reprendre le Contrôle de Son Parcours Tech
 
-Si vous n'avez aucune expérience technique et souhaitez vous lancer dans l'ingénierie cloud, cette phase est faite pour vous.
+Alors, vous voulez vous lancer dans l'ingénierie cloud ? Excellente nouvelle ! Mais laissez-moi vous dire une chose : il est temps de reprendre le contrôle de notre destin technologique. Fini l'époque où l'on subissait les choix des géants américains sans broncher.
 
-Si vous êtes déjà dans la tech et que vous passez au cloud, passez directement à la Phase 1.
+Si vous partez de zéro, cette phase est conçue pour vous. Si vous êtes déjà dans la tech et que vous voulez basculer vers le cloud souverain, creusons ensemble les bases.
 
-## Comment cette phase s'applique-t-elle au Cloud ?
+## Pourquoi le Cloud Souverain ?
 
-Avant de plonger dans les sujets spécifiques au cloud, il est crucial de comprendre les bases de l'informatique. Voici les concepts clés à maîtriser :
+Avant de plonger dans les aspects techniques, parlons philosophie. Chaque choix technologique que vous ferez dans votre carrière est un acte politique. Alors, autant le faire en conscience !
 
-### Concepts Fondamentaux
+### Les Fondamentaux du Cloud Libre
 
-**Qu'est-ce que Linux ?**
-Le système d'exploitation qui est l'épine dorsale de nombreux environnements cloud. Comprendre Linux est crucial pour l'informatique en nuage.
+**Linux : Notre Système de Liberté**
+Linux n'est pas qu'un système d'exploitation, c'est le symbole de notre indépendance technologique. Contrairement aux solutions propriétaires, Linux vous donne le contrôle total. C'est l'épine dorsale de 90% des infrastructures cloud modernes.
 
-**Qu'est-ce que le Networking ?**
-Apprenez comment les données se déplacent à travers les réseaux, une compétence essentielle pour tout ingénieur cloud.
+**Networking : Comprendre les Autoroutes de Données**
+Les réseaux, c'est comme le système routier : il faut comprendre comment les données circulent pour optimiser les performances. Et contrairement aux "boîtes noires" propriétaires, les outils open-source nous permettent de voir sous le capot.
 
-**Qu'est-ce que la Programmation ?**
-Des connaissances de base en programmation sont essentielles pour automatiser les tâches et gérer les ressources cloud.
+**Programmation : Votre Superpouvoir d'Automatisation**
+Python, Go, Bash... Ces langages sont vos alliés pour automatiser tout ce qui peut l'être. Pas besoin de licences coûteuses, juste votre créativité et du code libre.
 
-**Qu'est-ce que le Cloud Computing ?**
-Comprenez les concepts fondamentaux du cloud computing, y compris ses avantages et modèles de service (IaaS, PaaS, SaaS).
+**Cloud Computing : L'Art de la Virtualisation Distribuée**
+Le cloud, c'est démocratiser l'accès aux ressources informatiques. Mais attention aux sirènes du vendor lock-in ! Privilégions les solutions ouvertes et portables.
 
-**Qu'est-ce que DevOps ?**
-Apprenez les pratiques qui combinent le développement logiciel (Dev) et les opérations IT (Ops) pour raccourcir le cycle de développement système.
+**DevOps : Culture de la Collaboration**
+DevOps n'est pas un poste, c'est une philosophie ! Une culture qui prône la collaboration, l'automatisation et l'amélioration continue. Avec des outils libres et une communauté bienveillante.
 
 ## Compétences à acquérir à la fin de cette phase
 
@@ -49,10 +50,11 @@ Une norme industrielle pour les personnes qui entrent dans la tech.
 - **Est-ce utile ?** Ça dépend de votre style d'apprentissage
 - **Devriez-vous la passer ?** Elle peut être bénéfique pour votre CV et vous aider à décrocher des rôles de support
 
-### Autres certifications d'entrée de gamme
-- **AWS Cloud Practitioner** : Vue d'ensemble des services AWS
-- **Azure Fundamentals** : Concepts de base d'Azure
-- **Google Cloud Digital Leader** : Fondamentaux GCP
+### Certifications Open Source et Européennes
+- **Linux Foundation Certified System Administrator** : Maîtrise de Linux
+- **Kubernetes and Cloud Native Associate** : Fondamentaux cloud native
+- **Red Hat Certified System Administrator** : Compétences entreprise
+- **OVHcloud Certified Operator** : Expertise du cloud français
 
 ## Emplois d'entrée de gamme
 
@@ -63,31 +65,32 @@ Commencer dans un rôle de support est un excellent moyen d'entrer dans l'indust
 - Expérience pratique
 - Mentorat interne
 
-### Types de postes
-- **Help Desk Technician**
-- **IT Support Specialist**
-- **Junior System Administrator**
-- **Cloud Support Associate**
+### Types de postes orientés Open Source
+- **Technicien Support Linux**
+- **Administrateur Systèmes Open Source**
+- **Support Engineer Cloud Native**
+- **Spécialiste Infrastructure Libre**
 
 ## Ressources d'apprentissage
 
-### Formations gratuites
-- **FreeCodeCamp** : Cours complets sur YouTube
-- **Coursera** : Cours audit gratuits
-- **edX** : Cours universitaires en ligne
-- **AWS Training** : Formations cloud gratuites
+### Formations libres et gratuites
+- **Linux Foundation** : Formations Linux et cloud native
+- **Red Hat Training** : Cours ouverts et certifications
+- **OVHcloud Academy** : Formation cloud européen
+- **Université Numérique** : Cursus français en ligne
 
-### Communautés
-- **Discord Learn to Cloud** : Communauté active
-- **Reddit r/ITCareerQuestions** : Conseils carrière
-- **LinkedIn Learning** : Cours professionnels
+### Communautés francophones
+- **LinuxFr** : La communauté Linux historique
+- **Discord DevOps FR** : Entraide entre professionnels
+- **Forum Ubuntu-fr** : Support communautaire
+- **Stack Overflow en français** : Questions/réponses techniques
 
 ## Prochaines étapes
 
 Une fois cette phase terminée, vous serez prêt pour :
-- **Phase 1** : Fondamentaux Linux et Networking
-- **Phase 2** : Programmation et scripting
-- **Phase 3** : Fondamentaux des plateformes cloud
+- **Phase 1** : Maîtrise de Linux et des réseaux libres
+- **Phase 2** : Programmation et automatisation open source
+- **Phase 3** : Plateformes cloud souveraines (OVHcloud, Scaleway, self-hosting)
 
 ## Conseils pratiques
 
@@ -99,4 +102,4 @@ Une fois cette phase terminée, vous serez prêt pour :
 
 ---
 
-*Cette guide est inspiré de [Learn to Cloud Guide](https://learntocloud.guide/phase0/) et adapté pour une approche francophone.* 
+*Ensemble, construisons un écosystème technologique français et européen fort, basé sur l'open source et la souveraineté numérique. Parce que notre avenir technologique nous appartient !* 

@@ -6,10 +6,12 @@ tags:
   - jobs
   - interview
   - resume
+  - sovereignty
+  - open-source
 ---
-# Guide de Carrière Cloud Engineering
+# Carrière Cloud Souverain : Construire l'Avenir Numérique Français
 
-Transformer votre passion pour le cloud en carrière réussie nécessite une approche stratégique. Ce guide vous accompagne de la formation à l'emploi de vos rêves.
+Alors, vous voulez faire carrière dans le cloud ? Excellente idée ! Mais creusons ensemble comment orienter votre parcours vers un écosystème technologique plus éthique et souverain. Parce qu'après tout, votre carrière peut aussi être un acte militant !
 
 ## Parcours d'Apprentissage Cloud
 
@@ -30,74 +32,74 @@ Transformer votre passion pour le cloud en carrière réussie nécessite une app
 ### Phase 2 : Spécialisation (3-6 mois)
 **Objectif :** Choisir et approfondir une plateforme
 
-**AWS Track :**
-- EC2, S3, VPC, IAM
-- Lambda, API Gateway
-- RDS, DynamoDB
-- CloudFormation
+**Track OVHcloud :**
+- Instances, Object Storage, Network
+- Functions as a Service, API Gateway
+- Databases, Logs Data Platform
+- Terraform Provider OVH
 
-**Azure Track :**
-- Virtual Machines, Storage
-- Azure Functions
-- Azure SQL, CosmosDB
-- ARM Templates
+**Track Open Source :**
+- OpenStack, Ceph, SDN
+- Kubernetes, Serverless with Knative
+- PostgreSQL, ClickHouse
+- Ansible, Terraform
 
-**GCP Track :**
-- Compute Engine, Cloud Storage
-- Cloud Functions
-- BigQuery, Cloud SQL
-- Deployment Manager
+**Track Self-Hosting :**
+- Proxmox, KVM, LXC
+- Docker/Podman, Kubernetes
+- NextCloud, GitLab, Monitoring
+- Infrastructure as Code
 
 ### Phase 3 : Expertise (6-12 mois)
 **Objectif :** Devenir expert dans votre domaine
 
-**Domaines de spécialisation :**
-- **DevOps/CI-CD** : Jenkins, GitLab, Kubernetes
-- **Sécurité Cloud** : IAM, encryption, compliance
-- **Architecture** : Design patterns, microservices
-- **Data Engineering** : ETL, data lakes, analytics
+**Domaines de spécialisation souveraine :**
+- **DevOps Open Source** : GitLab, Jenkins, Kubernetes, Prometheus
+- **Sécurité RGPD** : Chiffrement souverain, audit, conformité européenne
+- **Architecture Cloud Native** : Microservices, service mesh, observabilité
+- **Data Engineering Éthique** : ETL open source, stockage européen
 
 ## Types de Postes Cloud
 
 ### Postes d'Entrée de Gamme
 
-**Cloud Support Engineer**
+**Support Engineer Cloud Souverain**
 - **Salaire :** 35-45k€
-- **Missions :** Support technique, troubleshooting
-- **Requis :** Certification cloud de base
-- **Évolution :** Cloud Engineer après 1-2 ans
+- **Missions :** Support OVHcloud/Scaleway, troubleshooting Linux
+- **Requis :** Linux, RGPD, certification européenne
+- **Évolution :** Cloud Engineer souverain
 
-**Junior DevOps Engineer**
+**Junior DevOps Open Source**
 - **Salaire :** 40-50k€
-- **Missions :** Automatisation, CI/CD
-- **Requis :** Scripting, outils DevOps
+- **Missions :** Pipelines GitLab, automatisation Ansible
+- **Requis :** Git, scripting, outils libres
 - **Évolution :** DevOps Engineer senior
 
-**Cloud Administrator**
+**Administrateur Infrastructure Libre**
 - **Salaire :** 38-48k€
-- **Missions :** Gestion d'infrastructure cloud
-- **Requis :** Administration système, cloud
-- **Évolution :** Cloud Architect
+- **Missions :** Gestion clusters Kubernetes, monitoring Prometheus
+- **Requis :** Linux, conteneurs, observabilité
+- **Évolution :** Architecte infrastructure
 
 ### Postes Expérimentés
 
-**Cloud Engineer**
+**Ingénieur Cloud Souverain**
 - **Salaire :** 50-70k€
-- **Missions :** Déploiement, optimisation
-- **Requis :** 2-3 ans d'expérience
+- **Missions :** Déploiement multi-cloud européen, optimisation coûts
+- **Requis :** 2-3 ans sur OVH/Scaleway/Hetzner
 - **Évolution :** Senior Cloud Engineer
 
-**DevOps Engineer**
+**DevOps Engineer Open Source**
 - **Salaire :** 55-75k€
-- **Missions :** Pipelines, automatisation
-- **Requis :** Expérience CI/CD, IaC
-- **Évolution :** DevOps Lead
+- **Missions :** Pipelines GitLab, IaC Terraform, Kubernetes
+- **Requis :** Maîtrise stack open source complète
+- **Évolution :** DevOps Lead/Architect
 
-**Cloud Architect**
+**Architecte Cloud Européen**
 - **Salaire :** 65-90k€
-- **Missions :** Design d'architectures
-- **Requis :** 5+ ans d'expérience
-- **Évolution :** Principal Architect
+- **Missions :** Design architectures RGPD-compliant
+- **Requis :** 5+ ans, vision souveraineté numérique
+- **Évolution :** CTO/Consulting
 
 ### Postes Spécialisés
 
@@ -171,45 +173,51 @@ Formation et certifications
 
 ## Certifications Stratégiques
 
-### Certifications d'Entrée
-**AWS Cloud Practitioner**
-- Coût : 100$
-- Durée préparation : 1 mois
+### Certifications Open Source d'Entrée
+**Linux Foundation Certified System Administrator**
+- Coût : 300$
+- Durée préparation : 2 mois
 - Validité : 3 ans
-- ROI : Excellent pour débuter
+- ROI : Excellent, reconnu mondialement
 
-**Azure Fundamentals**
-- Coût : 99$
-- Durée préparation : 3 semaines
-- Validité : Permanent
-- ROI : Bon pour l'écosystème Microsoft
+**Red Hat Certified System Administrator**
+- Coût : 400€
+- Durée préparation : 3 mois
+- Validité : 3 ans
+- ROI : Très valorisé en entreprise
 
-### Certifications Avancées
-**AWS Solutions Architect Associate**
-- Coût : 150$
+### Certifications Cloud Native Avancées
+**Certified Kubernetes Administrator (CKA)**
+- Coût : 300$
 - Durée préparation : 3-4 mois
 - Validité : 3 ans
-- ROI : Excellent, très demandée
+- ROI : Indispensable pour Kubernetes
 
-**Kubernetes Administrator (CKA)**
-- Coût : 300$
-- Durée préparation : 2-3 mois
+**Cloud Native Security Associate**
+- Coût : 250$
+- Durée préparation : 2 mois
 - Validité : 3 ans
-- ROI : Très bon pour DevOps
+- ROI : Sécurité cloud native, très demandé
 
 ## Conseils Réseautage
 
-### Communautés en ligne
-- **Discord Learn to Cloud** : Entraide débutants
-- **Reddit r/aws, r/AZURE** : Discussions techniques
-- **Stack Overflow** : Questions/réponses
-- **LinkedIn** : Networking professionnel
+### Communautés Francophones
+- **LinuxFr** : Communauté historique française
+- **Discord DevOps FR** : Discussions techniques quotidiennes
+- **Slack OVHcloud Community** : Retours d'expérience
+- **Stack Overflow français** : Questions/réponses
 
-### Événements et Meetups
-- **AWS User Groups** : Meetups locaux
-- **DevOps Days** : Conférences DevOps
-- **KubeCon** : Kubernetes community
-- **Cloud conferences** : Re:Invent, Build, Next
+### Événements et Meetups Locaux
+- **Devoxx France** : LA conférence développeurs
+- **DevOpsDays Paris** : Culture DevOps
+- **KubeCon Europe** : Kubernetes en Europe
+- **Open Source Experience** : OSS français
+
+### Contribution Open Source
+- **Documentation** de projets français
+- **Modules Terraform** pour providers européens
+- **Operators Kubernetes** pour l'écosystème local
+- **Outils d'automatisation** pour la souveraineté
 
 ### Contribution Open Source
 - Documentation de projets
@@ -251,6 +259,16 @@ Formation et certifications
 - Créez du contenu
 - Explorez l'entrepreneuriat
 
+## Entreprises à Impact Positif
+
+En France, de nombreuses entreprises portent les valeurs de souveraineté numérique :
+
+- **OVHcloud** : Champion européen du cloud
+- **Scaleway** : Innovation française
+- **Qwant** : Moteur de recherche français
+- **Framasoft** : Association de promotion du libre
+- **Open** : Outil de collaboration français
+
 ---
 
-*Le cloud engineering est un domaine en constante évolution. Votre capacité à apprendre et vous adapter sera votre plus grand atout pour une carrière réussie.* 
+*Votre carrière cloud peut être à la fois épanouissante et engagée. Ensemble, construisons un écosystème technologique français fort, éthique et souverain !* 
