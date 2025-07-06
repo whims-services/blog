@@ -9,24 +9,24 @@
     <meta name="generator" content="Retype 3.11.0">
 
     <!-- Primary Meta Tags -->
-    <title>Detecting Orphaned Resources</title>
-    <meta name="title" content="Detecting Orphaned Resources">
-    <meta name="description" content="The efficient management of resources in Kubernetes is essential to maintain a clean and performant cluster.">
+    <title>Fondamentaux DevOps</title>
+    <meta name="title" content="Fondamentaux DevOps">
+    <meta name="description" content="DevOps révolutionne la façon dont les équipes développent, déploient et maintiennent les logiciels.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://whims-services.github.io/kubernetes/orphan-resources/">
+    <link rel="canonical" href="https://whims-services.github.io/learn-to-cloud/devops-fundamentals/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://whims-services.github.io/kubernetes/orphan-resources/">
-    <meta property="og:title" content="Detecting Orphaned Resources">
-    <meta property="og:description" content="The efficient management of resources in Kubernetes is essential to maintain a clean and performant cluster.">
+    <meta property="og:url" content="https://whims-services.github.io/learn-to-cloud/devops-fundamentals/">
+    <meta property="og:title" content="Fondamentaux DevOps">
+    <meta property="og:description" content="DevOps révolutionne la façon dont les équipes développent, déploient et maintiennent les logiciels.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://whims-services.github.io/kubernetes/orphan-resources/">
-    <meta property="twitter:title" content="Detecting Orphaned Resources">
-    <meta property="twitter:description" content="The efficient management of resources in Kubernetes is essential to maintain a clean and performant cluster.">
+    <meta property="twitter:url" content="https://whims-services.github.io/learn-to-cloud/devops-fundamentals/">
+    <meta property="twitter:title" content="Fondamentaux DevOps">
+    <meta property="twitter:description" content="DevOps révolutionne la façon dont les équipes développent, déploient et maintiennent les logiciels.">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
@@ -35,7 +35,6 @@
     <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.805118062463" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
     <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.805118062463" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.11.0.805118062463" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -168,95 +167,346 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="retype-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="detecting-orphaned-resources" class="break-words">
+<doc-anchor-target id="fondamentaux-devops" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#detecting-orphaned-resources">#</doc-anchor-trigger>
-        <span>Detecting Orphaned Resources</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#fondamentaux-devops">#</doc-anchor-trigger>
+        <span>Fondamentaux DevOps</span>
     </h1>
 </doc-anchor-target>
-<p>The efficient management of resources in Kubernetes is essential to maintain a clean and performant cluster.
-However, it may happen that resources become orphaned, meaning they are no longer associated with an existing namespace.</p>
-<doc-anchor-target id="context">
+<p>DevOps révolutionne la façon dont les équipes développent, déploient et maintiennent les logiciels. C&#x27;est bien plus qu&#x27;un ensemble d&#x27;outils : c&#x27;est une philosophie qui transforme la culture d&#x27;entreprise.</p>
+<doc-anchor-target id="quest-ce-que-devops-">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#context">#</doc-anchor-trigger>
-        <span>Context</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#quest-ce-que-devops-">#</doc-anchor-trigger>
+        <span>Qu&#x27;est-ce que DevOps ?</span>
     </h2>
 </doc-anchor-target>
-<p>When deleting a namespace in Kubernetes, it may happen that the process blocks due to remaining resources or unresolved finalizers.
-Forcing the finalization of a namespace can lead to orphaned resources, complicating the cluster management.</p>
-<doc-anchor-target id="problem">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#problem">#</doc-anchor-trigger>
-        <span>Problem</span>
-    </h2>
+<p>DevOps est une approche qui combine le développement logiciel (<strong>Dev</strong>) et les opérations IT (<strong>Ops</strong>) pour raccourcir le cycle de développement et livrer des logiciels de haute qualité en continu.</p>
+<doc-anchor-target id="objectifs-principaux">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#objectifs-principaux">#</doc-anchor-trigger>
+        <span>Objectifs Principaux</span>
+    </h3>
 </doc-anchor-target>
-<p>Orphaned resources can cause various problems:</p>
+<p><strong>Vélocité</strong></p>
 <ul>
-<li><strong>Unused resource consumption:</strong> They allocate space and system resources.</li>
-<li><strong>Increased complexity:</strong> They make debugging and maintenance more difficult.</li>
-<li><strong>Conflicts risks:</strong> They can conflict with new resources created later.</li>
+<li>Livraison plus rapide des fonctionnalités</li>
+<li>Réduction du time-to-market</li>
+<li>Itérations plus fréquentes</li>
 </ul>
-<doc-anchor-target id="solution">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#solution">#</doc-anchor-trigger>
-        <span>Solution</span>
-    </h2>
-</doc-anchor-target>
-<p>To avoid these problems, it is crucial to diagnose and resolve the underlying causes of a namespace blocking.
-Here is a script that allows you to detect orphaned resources in a Kubernetes cluster:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">#!/bin/bash
-
-# Get the list of current namespaces in the cluster
-current_namespaces=(\$(kubectl get ns --no-headers | awk '{print \$1}'))
-
-# Get the list of API resources that are namespaced (associated with a namespace)
-api_resources=(\$(kubectl api-resources --verbs=list --namespaced -o name))
-
-# Iterate over each API resource
-for api_resource in \${api_resources[@]}; do
-    # Read each line of the output of the kubectl get command for the current API resource
-    while IFS= read -r line; do
-        # Extract the namespace from the resource from the line
-        resource_namespace=\$(echo \$line | awk '{print \$1}')
-        # Extract the name of the resource from the line
-        resource_name=\$(echo \$line | awk '{print \$2}')
-
-        # Check if the resource namespace does not exist in the list of current namespaces
-        if [[ ! &quot; \${current_namespaces[@]} &quot; =~ &quot; \$resource_namespace &quot; ]]; then
-            # If the namespace does not exist, display the API resource, the namespace and the resource name
-            echo &quot;api-resource: \${api_resource} - namespace: ${resource_namespace} - resource name: ${resource_name}&quot;
-        fi
-        # Read the resources for the current API resource in all namespaces, ignoring errors if the namespace does not exist
-    done &lt; &lt;(kubectl get \$api_resource -A --ignore-not-found --no-headers -o custom-columns=&quot;NAMESPACE:.metadata.namespace,NAME:.metadata.name&quot;)
-done</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="usage">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#usage">#</doc-anchor-trigger>
-        <span>Usage</span>
-    </h2>
-</doc-anchor-target>
-<p>To use the script, save it to a file and make it executable:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-bash"><code v-pre class="language-bash">chmod +x detect-orphan-resources.sh
-./detect-orphan-resources.sh</code></pre>
-</doc-codeblock></div>
-<p>Sources:</p>
+<p><strong>Qualité</strong></p>
 <ul>
-<li><a href="https://www.reddit.com/r/kubernetes/comments/1j5644x/why_you_should_not_forcefully_finalize_a/">Reddit</a></li>
+<li>Moins de bugs en production</li>
+<li>Tests automatisés</li>
+<li>Monitoring proactif</li>
 </ul>
+<p><strong>Collaboration</strong></p>
+<ul>
+<li>Meilleure communication entre équipes</li>
+<li>Responsabilité partagée</li>
+<li>Feedback continu</li>
+</ul>
+<doc-anchor-target id="philosophie-et-culture-devops">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#philosophie-et-culture-devops">#</doc-anchor-trigger>
+        <span>Philosophie et Culture DevOps</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="principes-fondamentaux">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#principes-fondamentaux">#</doc-anchor-trigger>
+        <span>Principes Fondamentaux</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Collaboration</strong></p>
+<ul>
+<li>Élimination des silos organisationnels</li>
+<li>Équipes cross-fonctionnelles</li>
+<li>Communication transparente</li>
+</ul>
+<p><strong>Automatisation</strong></p>
+<ul>
+<li>Automatisation des tâches répétitives</li>
+<li>Réduction des erreurs humaines</li>
+<li>Libération du temps pour l&#x27;innovation</li>
+</ul>
+<p><strong>Mesure</strong></p>
+<ul>
+<li>Monitoring et métriques en continu</li>
+<li>Décisions basées sur les données</li>
+<li>Amélioration continue</li>
+</ul>
+<p><strong>Feedback</strong></p>
+<ul>
+<li>Boucles de feedback rapides</li>
+<li>Apprentissage des échecs</li>
+<li>Ajustements itératifs</li>
+</ul>
+<doc-anchor-target id="pratiques-devops-essentielles">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#pratiques-devops-essentielles">#</doc-anchor-trigger>
+        <span>Pratiques DevOps Essentielles</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="integration-continue-ci">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#integration-continue-ci">#</doc-anchor-trigger>
+        <span>Integration Continue (CI)</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Qu&#x27;est-ce que c&#x27;est ?</strong>
+Pratique de merger fréquemment le code dans un repository central, suivi de tests automatisés.</p>
+<p><strong>Outils populaires :</strong></p>
+<ul>
+<li>Jenkins</li>
+<li>GitLab CI</li>
+<li>GitHub Actions</li>
+<li>Azure DevOps</li>
+</ul>
+<p><strong>Bénéfices :</strong></p>
+<ul>
+<li>Détection précoce des problèmes</li>
+<li>Réduction des conflits de code</li>
+<li>Qualité code maintenue</li>
+</ul>
+<doc-anchor-target id="livraison-continue-cd">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#livraison-continue-cd">#</doc-anchor-trigger>
+        <span>Livraison Continue (CD)</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Qu&#x27;est-ce que c&#x27;est ?</strong>
+Extension de CI qui automatise le déploiement du code vers différents environnements.</p>
+<p><strong>Types de CD :</strong></p>
+<ul>
+<li><strong>Continuous Delivery</strong> : Déploiement manuel en production</li>
+<li><strong>Continuous Deployment</strong> : Déploiement automatique en production</li>
+</ul>
+<p><strong>Pipeline typique :</strong></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-none"><code v-pre class="language-none">Code → Build → Test → Deploy Dev → Deploy Staging → Deploy Prod</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="infrastructure-as-code-iac">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#infrastructure-as-code-iac">#</doc-anchor-trigger>
+        <span>Infrastructure as Code (IaC)</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Qu&#x27;est-ce que c&#x27;est ?</strong>
+Gestion et provisioning de l&#x27;infrastructure via du code plutôt que des processus manuels.</p>
+<p><strong>Outils populaires :</strong></p>
+<ul>
+<li>Terraform</li>
+<li>AWS CloudFormation</li>
+<li>Azure Resource Manager</li>
+<li>Ansible</li>
+</ul>
+<p><strong>Avantages :</strong></p>
+<ul>
+<li>Reproductibilité</li>
+<li>Versioning de l&#x27;infrastructure</li>
+<li>Réduction des erreurs</li>
+</ul>
+<doc-anchor-target id="outils-devops-incontournables">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#outils-devops-incontournables">#</doc-anchor-trigger>
+        <span>Outils DevOps Incontournables</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="contrôle-de-version">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#contrôle-de-version">#</doc-anchor-trigger>
+        <span>Contrôle de Version</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Git</strong> : Standard de facto</li>
+<li><strong>GitHub/GitLab</strong> : Plateformes collaboratives</li>
+<li><strong>Branching strategies</strong> : GitFlow, GitHub Flow</li>
+</ul>
+<doc-anchor-target id="containerisation">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#containerisation">#</doc-anchor-trigger>
+        <span>Containerisation</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Docker</strong> : Containerisation d&#x27;applications</li>
+<li><strong>Kubernetes</strong> : Orchestration de containers</li>
+<li><strong>Docker Compose</strong> : Applications multi-containers</li>
+</ul>
+<doc-anchor-target id="monitoring-et-logging">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#monitoring-et-logging">#</doc-anchor-trigger>
+        <span>Monitoring et Logging</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Prometheus</strong> : Monitoring et alerting</li>
+<li><strong>Grafana</strong> : Visualisation de métriques</li>
+<li><strong>ELK Stack</strong> : Logging et analyse</li>
+</ul>
+<doc-anchor-target id="communication">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#communication">#</doc-anchor-trigger>
+        <span>Communication</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Slack</strong> : Communication d&#x27;équipe</li>
+<li><strong>Microsoft Teams</strong> : Collaboration</li>
+<li><strong>Incident management</strong> : PagerDuty, Opsgenie</li>
+</ul>
+<doc-anchor-target id="métriques-devops-importantes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#métriques-devops-importantes">#</doc-anchor-trigger>
+        <span>Métriques DevOps Importantes</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="métriques-de-performance">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#métriques-de-performance">#</doc-anchor-trigger>
+        <span>Métriques de Performance</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Deployment Frequency</strong></p>
+<ul>
+<li>Fréquence des déploiements</li>
+<li>Objectif : Augmenter la fréquence</li>
+</ul>
+<p><strong>Lead Time for Changes</strong></p>
+<ul>
+<li>Temps entre commit et production</li>
+<li>Objectif : Réduire le délai</li>
+</ul>
+<p><strong>Change Failure Rate</strong></p>
+<ul>
+<li>Pourcentage de déploiements causant des incidents</li>
+<li>Objectif : Maintenir sous 15%</li>
+</ul>
+<p><strong>Time to Recovery</strong></p>
+<ul>
+<li>Temps pour restaurer le service après incident</li>
+<li>Objectif : Réduire au maximum</li>
+</ul>
+<doc-anchor-target id="métriques-business">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#métriques-business">#</doc-anchor-trigger>
+        <span>Métriques Business</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Customer Satisfaction</strong> : NPS, CSAT
+<strong>Revenue Impact</strong> : Revenus générés par les nouvelles fonctionnalités
+<strong>User Adoption</strong> : Taux d&#x27;adoption des nouvelles features</p>
+<doc-anchor-target id="carrières-devops">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#carrières-devops">#</doc-anchor-trigger>
+        <span>Carrières DevOps</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="rôles-typiques">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#rôles-typiques">#</doc-anchor-trigger>
+        <span>Rôles Typiques</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>DevOps Engineer</strong></p>
+<ul>
+<li>Automatisation des pipelines</li>
+<li>Gestion de l&#x27;infrastructure</li>
+<li>Collaboration Dev/Ops</li>
+</ul>
+<p><strong>Site Reliability Engineer (SRE)</strong></p>
+<ul>
+<li>Fiabilité des systèmes</li>
+<li>Monitoring et alerting</li>
+<li>Incident response</li>
+</ul>
+<p><strong>Platform Engineer</strong></p>
+<ul>
+<li>Développement de plateformes internes</li>
+<li>Outils pour développeurs</li>
+<li>Self-service infrastructure</li>
+</ul>
+<doc-anchor-target id="compétences-recherchées">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#compétences-recherchées">#</doc-anchor-trigger>
+        <span>Compétences Recherchées</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Techniques :</strong></p>
+<ul>
+<li>Scripting (Python, Bash)</li>
+<li>Cloud platforms (AWS, Azure, GCP)</li>
+<li>Containerisation (Docker, Kubernetes)</li>
+<li>IaC (Terraform, Ansible)</li>
+</ul>
+<p><strong>Soft Skills :</strong></p>
+<ul>
+<li>Communication</li>
+<li>Collaboration</li>
+<li>Problem-solving</li>
+<li>Adaptabilité</li>
+</ul>
+<doc-anchor-target id="certifications-devops">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#certifications-devops">#</doc-anchor-trigger>
+        <span>Certifications DevOps</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="certifications-générales">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#certifications-générales">#</doc-anchor-trigger>
+        <span>Certifications Générales</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>AWS Certified DevOps Engineer</strong></li>
+<li><strong>Azure DevOps Engineer Expert</strong></li>
+<li><strong>Google Cloud Professional DevOps Engineer</strong></li>
+</ul>
+<doc-anchor-target id="certifications-spécialisées">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#certifications-spécialisées">#</doc-anchor-trigger>
+        <span>Certifications Spécialisées</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Docker Certified Associate</strong></li>
+<li><strong>Kubernetes Administrator (CKA)</strong></li>
+<li><strong>HashiCorp Terraform Associate</strong></li>
+</ul>
+<doc-anchor-target id="prochaines-étapes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#prochaines-étapes">#</doc-anchor-trigger>
+        <span>Prochaines Étapes</span>
+    </h2>
+</doc-anchor-target>
+<ol>
+<li><strong>Apprendre Git</strong> et les workflows de collaboration</li>
+<li><strong>Pratiquer CI/CD</strong> avec des projets personnels</li>
+<li><strong>Expérimenter avec Docker</strong> et la containerisation</li>
+<li><strong>Explorer un cloud provider</strong> (AWS, Azure, ou GCP)</li>
+<li><strong>Automatiser</strong> tout ce qui peut l&#x27;être</li>
+</ol>
+<hr>
+<p><em>DevOps n&#x27;est pas une destination, c&#x27;est un voyage d&#x27;amélioration continue. Chaque petit pas vers l&#x27;automatisation et la collaboration vous rapproche de l&#x27;excellence opérationnelle.</em></p>
 
                                 <div id="retype-tags" class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
                                         <a href="../../tags/">
                                             <svg class="inline-block -mb-px mr-1.5 text-body-link hover:text-body-link-hover" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" overflow="visible" fill="currentColor"><g><path d="M21.3 9.88l-8.59-8.59C12.52 1.11 12.27 1 12 1H2c-.55 0-1 .45-1 1v10c0 .27.11.52.29.71l8.59 8.58c.57.57 1.32.88 2.12.88s1.55-.31 2.12-.88l7.17-7.17a3.009 3.009 0 00.01-4.24zm-1.42 2.82l-7.17 7.17c-.39.39-1.02.39-1.42 0L3 11.59V3h8.59l8.29 8.29c.39.39.39 1.03 0 1.41z" /><path d="M7.01 6C6.45 6 6 6.45 6 7s.45 1 1 1 1-.45 1-1-.44-1-.99-1z" /></g></svg>
                                         </a>
-                                        <span class="mr-2"><a href="../../tags/kubernetes/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border hover:text-badge-info-text-hover hover:bg-badge-info-hover hover:border-badge-info-border-hover transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>kubernetes</span>
+                                        <span class="mr-2"><a href="../../tags/devops/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border hover:text-badge-info-text-hover hover:bg-badge-info-hover hover:border-badge-info-border-hover transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>devops</span>
                                 </a></span>
-                                        <span class="mr-2"><a href="../../tags/namespace/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border hover:text-badge-info-text-hover hover:bg-badge-info-hover hover:border-badge-info-border-hover transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>namespace</span>
+                                        <span class="mr-2"><a href="../../tags/ci-cd/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border hover:text-badge-info-text-hover hover:bg-badge-info-hover hover:border-badge-info-border-hover transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>ci-cd</span>
+                                </a></span>
+                                        <span class="mr-2"><a href="../../tags/automation/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border hover:text-badge-info-text-hover hover:bg-badge-info-hover hover:border-badge-info-border-hover transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>automation</span>
+                                </a></span>
+                                        <span class="mr-2"><a href="../../tags/culture/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border hover:text-badge-info-text-hover hover:bg-badge-info-hover hover:border-badge-info-border-hover transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
+                                    <span>culture</span>
                                 </a></span>
                                     </span>
                                 </div>
@@ -268,13 +518,20 @@ done</code></pre>
                             
                                 <nav id="retype-nextprev" class="print:hidden flex mt-14">
                                     <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../git/git-useful-commands/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-base-text-muted">Previous</span>
+                                                <span class="block mt-1">Git Commands to Save Your Time</span>
+                                            </span>
+                                        </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../kubernetes/ingress-optimization/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../learn-to-cloud/cloud-fundamentals/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
-                                                <span class="block mt-1">NGINX Ingress Controller optimization (Helm deployed)</span>
+                                                <span class="block mt-1">Fondamentaux du Cloud Computing</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -318,6 +575,6 @@ done</code></pre>
 
     <div id="retype-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Detecting Orphaned Resources", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Fondamentaux DevOps", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
